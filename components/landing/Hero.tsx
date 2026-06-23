@@ -18,8 +18,7 @@ import { EASE_CALM } from "@/lib/motion";
 import { WaitlistForm } from "@/components/landing/WaitlistForm";
 import { TableroMockup, RsvpPhoneMockup } from "@/components/landing/Mockups";
 import { HeroBackground } from "@/components/landing/HeroBackground";
-import { Polaroid } from "@/components/landing/Polaroid";
-import { COUPLE_PHOTOS } from "@/lib/photos";
+import { HeroVideo } from "@/components/landing/HeroVideo";
 
 const DIFFERENTIATORS = [
   { icon: MessageCircle, label: "RSVP por WhatsApp" },
@@ -140,15 +139,15 @@ export function Hero() {
             <RsvpPhoneMockup />
           </motion.div>
 
-          {/* foto flotante de pareja */}
+          {/* video flotante: el beso de la pareja (animado desde la foto) */}
           <motion.div
             style={{ y: yPol }}
-            initial={{ opacity: 0, scale: 0.9, rotate: reduce ? 0 : -7 }}
-            animate={{ opacity: 1, scale: 1, rotate: reduce ? 0 : -7 }}
+            initial={{ opacity: 0, scale: 0.9, rotate: reduce ? 0 : -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: reduce ? 0 : -5 }}
             transition={{ duration: 1, ease: EASE_CALM, delay: 0.45 }}
-            className="absolute -left-6 -top-10 z-20 hidden w-[9rem] lg:block"
+            className="absolute -left-8 -top-12 z-20 hidden w-[10.5rem] lg:block"
           >
-            <Polaroid photo={COUPLE_PHOTOS[0]} />
+            <HeroVideo />
           </motion.div>
 
           {/* chip flotante: confirmaciones */}
@@ -157,7 +156,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: EASE_CALM, delay: 0.55 }}
-            className="absolute -bottom-6 left-2 z-20 hidden items-center gap-2.5 rounded-2xl border border-line bg-card/90 px-3.5 py-2.5 shadow-lift backdrop-blur lg:flex"
+            className="absolute -right-4 -top-5 z-20 hidden items-center gap-2.5 rounded-2xl border border-line bg-card/90 px-3.5 py-2.5 shadow-lift backdrop-blur lg:flex"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-confirmed/15 text-confirmed">
               <Check size={16} />
