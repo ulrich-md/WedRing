@@ -7,16 +7,10 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import {
-  MessageCircle,
-  HeartHandshake,
-  Store,
-  Wallet,
-  Check,
-} from "lucide-react";
+import { MessageCircle, HeartHandshake, Store, Wallet } from "lucide-react";
 import { EASE_CALM } from "@/lib/motion";
 import { WaitlistForm } from "@/components/landing/WaitlistForm";
-import { TableroMockup, RsvpPhoneMockup } from "@/components/landing/Mockups";
+import { TableroMockup } from "@/components/landing/Mockups";
 import { HeroBackground } from "@/components/landing/HeroBackground";
 import { HeroVideo } from "@/components/landing/HeroVideo";
 
@@ -36,9 +30,7 @@ export function Hero() {
   });
   const k = reduce ? 0 : 1;
   const yMock = useTransform(scrollYProgress, [0, 1], [0, -90 * k]);
-  const yPhone = useTransform(scrollYProgress, [0, 1], [0, -170 * k]);
-  const yPol = useTransform(scrollYProgress, [0, 1], [0, -230 * k]);
-  const yChip = useTransform(scrollYProgress, [0, 1], [0, -130 * k]);
+  const yVideo = useTransform(scrollYProgress, [0, 1], [0, -200 * k]);
 
   return (
     <section
@@ -114,7 +106,8 @@ export function Hero() {
           </motion.ul>
         </div>
 
-        {/* Producto + elementos flotantes — entre lo primero que se ve */}
+        {/* Producto: un solo visual principal + el video como único acento.
+            Con aire, nada amontonado. */}
         <div className="relative mx-auto w-full max-w-xl">
           {/* navegador (principal) */}
           <motion.div style={{ y: yMock }} className="relative z-10">
@@ -128,45 +121,15 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* teléfono (RSVP web) asomándose */}
-          <motion.div
-            style={{ y: yPhone }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: EASE_CALM, delay: 0.35 }}
-            className="absolute -bottom-12 -right-2 z-20 hidden origin-bottom-right scale-[0.6] drop-shadow-[0_30px_60px_rgba(58,63,53,0.26)] sm:block"
-          >
-            <RsvpPhoneMockup />
-          </motion.div>
-
           {/* video flotante: el beso de la pareja (animado desde la foto) */}
           <motion.div
-            style={{ y: yPol }}
-            initial={{ opacity: 0, scale: 0.9, rotate: reduce ? 0 : -5 }}
+            style={{ y: yVideo }}
+            initial={{ opacity: 0, scale: 0.92, rotate: reduce ? 0 : -5 }}
             animate={{ opacity: 1, scale: 1, rotate: reduce ? 0 : -5 }}
-            transition={{ duration: 1, ease: EASE_CALM, delay: 0.45 }}
-            className="absolute -left-8 -top-12 z-20 hidden w-[10.5rem] lg:block"
+            transition={{ duration: 1, ease: EASE_CALM, delay: 0.4 }}
+            className="absolute -bottom-10 -right-6 z-20 hidden w-[10.5rem] lg:block"
           >
             <HeroVideo />
-          </motion.div>
-
-          {/* chip flotante: confirmaciones */}
-          <motion.div
-            style={{ y: yChip }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: EASE_CALM, delay: 0.55 }}
-            className="absolute -right-4 -top-5 z-20 hidden items-center gap-2.5 rounded-2xl border border-line bg-card/90 px-3.5 py-2.5 shadow-lift backdrop-blur lg:flex"
-          >
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-confirmed/15 text-confirmed">
-              <Check size={16} />
-            </span>
-            <div className="text-left">
-              <p className="font-serif text-base leading-none text-ink">84 sí</p>
-              <p className="font-sans text-[0.66rem] text-ink-faint">
-                confirmaron hoy
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>
