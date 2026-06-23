@@ -25,7 +25,7 @@ const COLS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-line px-5 py-14 sm:px-8">
+    <footer className="border-t border-line bg-ivory-deep/30 px-5 py-16 sm:px-8">
       <div className="mx-auto grid max-w-6xl gap-10 sm:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
@@ -36,6 +36,12 @@ export function Footer() {
             El hogar tranquilo donde planeas tu boda, y vive donde ya estás:
             WhatsApp.
           </p>
+          <a
+            href="#lista"
+            className="mt-5 inline-flex h-10 items-center justify-center rounded-full bg-sage-600 px-5 font-sans text-sm font-medium text-ivory shadow-calm transition-colors duration-[250ms] ease-calm hover:bg-sage-700"
+          >
+            Únete a la lista de espera
+          </a>
           <div className="mt-5 flex items-center gap-2">
             {/* 🔌 Reemplaza href por tus redes reales cuando las tengas */}
             <a

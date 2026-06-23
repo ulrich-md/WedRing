@@ -1,26 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  animate,
-  useInView,
-  useReducedMotion,
-} from "framer-motion";
+import { animate, useInView, useReducedMotion } from "framer-motion";
 import { Send, MousePointerClick, RefreshCw } from "lucide-react";
 import { EASE_CALM } from "@/lib/motion";
 import { RsvpPhoneMockup } from "@/components/landing/Mockups";
+import { Polaroid } from "@/components/landing/Polaroid";
 import { SectionReveal } from "@/components/landing/SectionReveal";
+import { Eyebrow } from "@/components/landing/SectionBits";
+import { COUPLE_PHOTOS } from "@/lib/photos";
 
 const STEPS = [
   {
     icon: Send,
-    title: "Envías el link",
-    body: "Cada invitado recibe el suyo, personal, por WhatsApp.",
+    title: "Compartes el link",
+    body: "wedRing crea un link personal por invitado. Lo mandas por WhatsApp.",
   },
   {
     icon: MousePointerClick,
     title: "Confirman en segundos",
-    body: "Sí, no o tal vez · cuántos van · qué van a comer. Sin apps.",
+    body: "Sí, no o tal vez · cuántos van · qué van a comer. Sin apps, sin cuentas.",
   },
   {
     icon: RefreshCw,
@@ -31,34 +30,55 @@ const STEPS = [
 
 export function RsvpFeature() {
   return (
-    <section id="corazon" className="scroll-mt-24 px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
-        {/* teléfono */}
-        <SectionReveal className="order-2 lg:order-1">
-          <RsvpPhoneMockup />
-        </SectionReveal>
+    <section id="corazon" className="relative scroll-mt-24 px-5 py-24 sm:px-8 sm:py-28">
+      {/* banda sage suave: es el corazón */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, rgb(var(--ivory)) 0%, rgb(var(--sage-50)) 45%, rgb(var(--ivory)) 100%)",
+        }}
+        aria-hidden
+      />
+
+      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1fr_1.05fr]">
+        {/* escenario del teléfono */}
+        <div className="order-2 lg:order-1">
+          <SectionReveal className="relative mx-auto w-fit">
+            {/* panel suave detrás */}
+            <div className="absolute -inset-6 -z-10 rounded-[2.4rem] bg-gradient-to-br from-sage-100/80 to-gold-soft/30 blur-[2px]" />
+            <RsvpPhoneMockup />
+
+            {/* foto de pareja flotante */}
+            <div className="absolute -bottom-6 -left-10 hidden w-[8.5rem] -rotate-6 sm:block">
+              <Polaroid photo={COUPLE_PHOTOS[1]} />
+            </div>
+          </SectionReveal>
+        </div>
 
         {/* copy */}
         <div className="order-1 lg:order-2">
           <SectionReveal>
-            <p className="eyebrow">El corazón de wedRing</p>
-            <h2 className="mt-2 text-[2.2rem] leading-tight sm:text-[2.7rem]">
-              Confirma a todos por WhatsApp, sin perseguir a nadie.
+            <Eyebrow>El corazón de wedRing</Eyebrow>
+            <h2 className="mt-4 text-[clamp(2rem,4.6vw,3rem)] font-medium leading-[1.03] tracking-[-0.015em]">
+              Confirma a todos por WhatsApp,{" "}
+              <span className="italic text-sage-600">sin perseguir a nadie.</span>
             </h2>
             <p className="mt-4 max-w-md font-sans text-lg leading-relaxed text-ink-soft">
-              En México casi nadie contesta una invitación de papel o correo.
-              Por eso el RSVP de wedRing vive donde ya están tus invitados.
+              En México casi nadie contesta una invitación de papel o correo. Por
+              eso el RSVP de wedRing vive donde ya están tus invitados.
             </p>
           </SectionReveal>
 
-          <div className="mt-8 space-y-5">
+          {/* pasos con línea conectora */}
+          <div className="relative mt-9 space-y-6 before:absolute before:left-5 before:top-3 before:h-[calc(100%-2rem)] before:w-px before:bg-line">
             {STEPS.map((s, i) => (
               <SectionReveal key={s.title} delay={0.06 * i}>
-                <div className="flex gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-50 text-sage-600">
-                    <s.icon size={18} />
+                <div className="relative flex gap-4">
+                  <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line bg-card text-sage-600 shadow-calm">
+                    <s.icon size={17} />
                   </span>
-                  <div>
+                  <div className="pt-1">
                     <p className="font-serif text-lg text-ink">{s.title}</p>
                     <p className="font-sans text-[0.95rem] leading-snug text-ink-soft">
                       {s.body}
@@ -69,13 +89,13 @@ export function RsvpFeature() {
             ))}
           </div>
 
-          <SectionReveal delay={0.1}>
-            <div className="mt-9 flex items-center gap-4 rounded-2xl border border-line bg-card px-6 py-5">
-              <p className="font-serif text-4xl leading-none text-sage-600">
+          <SectionReveal delay={0.12}>
+            <div className="mt-9 flex items-center gap-5 rounded-2xl border border-sage-200 bg-gradient-to-br from-sage-50 to-card px-6 py-5 shadow-calm">
+              <p className="font-serif text-5xl leading-none text-sage-600">
                 <CountUp to={84} />
               </p>
-              <p className="font-sans text-sm text-ink-soft">
-                confirmados —de un vistazo, sin hojas de cálculo ni mensajes
+              <p className="font-sans text-sm leading-snug text-ink-soft">
+                confirmados, de un vistazo —sin hojas de cálculo ni mensajes
                 sueltos.
               </p>
             </div>
