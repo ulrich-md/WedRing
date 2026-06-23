@@ -1,6 +1,7 @@
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
 import { LandingNav } from "@/components/landing/LandingNav";
 import { Hero } from "@/components/landing/Hero";
+import { CouplesCarousel } from "@/components/landing/CouplesCarousel";
 import { ChaosToCalm } from "@/components/landing/ChaosToCalm";
 import { RsvpFeature } from "@/components/landing/RsvpFeature";
 import { FeatureBento } from "@/components/landing/FeatureBento";
@@ -22,6 +23,7 @@ export default function LandingPage() {
       <LandingNav />
       <main>
         <Hero />
+        <CouplesCarousel />
         <ChaosToCalm />
         <RsvpFeature />
         <FeatureBento />

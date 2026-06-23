@@ -83,9 +83,19 @@ const config: Config = {
           from: { strokeDashoffset: "1" },
           to: { strokeDashoffset: "0" },
         },
+        float: {
+          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
+          "50%": { transform: "translate3d(0,-18px,0) scale(1.04)" },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "fade-rise": "fade-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
+        float: "float 9s ease-in-out infinite",
+        marquee: "marquee 38s linear infinite",
       },
     },
   },
