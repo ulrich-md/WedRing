@@ -6,17 +6,20 @@ la versión remota generada con IA.
 
 ## ¿Dónde subo cada cosa?
 
-### Fotos de parejas → `public/assets/couples/`
-Guárdalas exactamente con estos nombres (formato `.webp` recomendado, o `.jpg`):
+### Fotos de parejas → `public/assets/couples/` ✅ (ya subidas)
+Nombres usados por el sitio:
 
 ```
-public/assets/couples/couple-1.webp
-public/assets/couples/couple-2.webp
-public/assets/couples/couple-3.webp
-public/assets/couples/couple-4.webp
+public/assets/couples/couple-1.png
+public/assets/couples/couple-2.png
+public/assets/couples/couple-3.png
+public/assets/couples/couple-4.png
 ```
 
-Se usan en el carrusel del hero y en la foto flotante. Proporción ideal: vertical (3:4 o 4:5).
+Se usan en el carrusel. Proporción ideal: vertical (3:4 o 4:5).
+Si las reemplazas por fotos reales, conserva los mismos nombres (o ponlas en
+`.webp` y actualiza `lib/photos.ts`). Tip de peso: estas PNG pesan ~5 MB;
+conviene exportarlas como `.webp` (~200 KB) para que el sitio cargue rápido.
 
 ### Video del hero → `public/assets/video/`
 El beso de la pareja que se ve flotando en el hero:

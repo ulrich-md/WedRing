@@ -17,10 +17,10 @@ const CDN =
   "https://d8j0ntlcm91z4.cloudfront.net/user_3De3RdMNZReGlmJYXAnYF4EkDFp";
 
 export const COUPLE_PHOTOS: CouplePhoto[] = [
-  { local: "/assets/couples/couple-1.webp", remote: `${CDN}/hf_20260623_035146_36f0570a-3df9-4b17-8f35-d8aebeafc6de_min.webp` },
-  { local: "/assets/couples/couple-2.webp", remote: `${CDN}/hf_20260623_035146_01ac21ae-ff14-47d8-8005-58bcce26070c_min.webp` },
-  { local: "/assets/couples/couple-3.webp", remote: `${CDN}/hf_20260623_035146_92d4c2b4-1083-4160-83ea-a5c36bfe4f8d_min.webp` },
-  { local: "/assets/couples/couple-4.webp", remote: `${CDN}/hf_20260623_035146_2eeb209d-eac8-42bc-8b1a-1c2efd759d40_min.webp` },
+  { local: "/assets/couples/couple-1.png", remote: `${CDN}/hf_20260623_035146_36f0570a-3df9-4b17-8f35-d8aebeafc6de_min.webp` },
+  { local: "/assets/couples/couple-2.png", remote: `${CDN}/hf_20260623_035146_01ac21ae-ff14-47d8-8005-58bcce26070c_min.webp` },
+  { local: "/assets/couples/couple-3.png", remote: `${CDN}/hf_20260623_035146_92d4c2b4-1083-4160-83ea-a5c36bfe4f8d_min.webp` },
+  { local: "/assets/couples/couple-4.png", remote: `${CDN}/hf_20260623_035146_2eeb209d-eac8-42bc-8b1a-1c2efd759d40_min.webp` },
 ];
 
 /** Video del hero (beso de la pareja). El remoto se llena al generar. */
