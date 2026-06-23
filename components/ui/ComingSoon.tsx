@@ -23,7 +23,7 @@ export function ComingSoon({
   return (
     <Reveal className="mt-10">
       <div className="card-calm mx-auto max-w-xl px-8 py-12 text-center">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-rosa-50 text-rosa-600">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-sage-50 text-sage-600">
           <Icon size={24} />
         </span>
         <h2 className="mt-6 text-2xl">{title}</h2>

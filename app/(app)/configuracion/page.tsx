@@ -74,8 +74,8 @@ export default function ConfiguracionPage() {
                 className={
                   "rounded-xl border px-4 py-3 text-left font-sans text-sm transition-all duration-[250ms] ease-calm " +
                   (draft.style === s.id
-                    ? "border-rosa-300 bg-rosa-50 font-medium text-rosa-700"
-                    : "border-line bg-card text-ink-soft hover:border-rosa-200")
+                    ? "border-sage-300 bg-sage-50 font-medium text-sage-700"
+                    : "border-line bg-card text-ink-soft hover:border-sage-200")
                 }
               >
                 {s.label}
@@ -93,8 +93,8 @@ export default function ConfiguracionPage() {
                 className={
                   "flex items-center gap-2 rounded-full border py-1.5 pl-1.5 pr-3.5 transition-all duration-[250ms] ease-calm " +
                   (draft.palette.name === p.name
-                    ? "border-rosa-300 bg-rosa-50"
-                    : "border-line bg-card hover:border-rosa-200")
+                    ? "border-sage-300 bg-sage-50"
+                    : "border-line bg-card hover:border-sage-200")
                 }
               >
                 <span
@@ -119,7 +119,7 @@ export default function ConfiguracionPage() {
               )}
             </Button>
             {saved && (
-              <span className="font-sans text-sm text-rosa-600">
+              <span className="font-sans text-sm text-sage-600">
                 Listo, todo en orden.
               </span>
             )}
@@ -198,7 +198,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-rosa-300 focus:outline-none"
+        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-sage-300 focus:outline-none"
       />
     </label>
   );

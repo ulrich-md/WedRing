@@ -1,13 +1,10 @@
 import type { Config } from "tailwindcss";
 
 /**
- * wedRing — identidad festiva y muy mexicana.
- * Rosa mexicano (marca) + cempasúchil (coral) + talavera (agua) + sol.
- * Tokens reales en globals.css (canales RGB); aquí los exponemos a Tailwind
- * con el placeholder <alpha-value> para que la opacidad funcione siempre.
+ * wedRing — quiet luxury para planear tu boda con calma.
+ * Paleta: marfil cálido, verde sage, dorado suave. Tipografía serif + sans humanista.
+ * Tokens reales en globals.css (CSS variables); aquí solo los exponemos a Tailwind.
  */
-const rgb = (v: string) => `rgb(var(${v}) / <alpha-value>)`;
-
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -17,63 +14,47 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: { DEFAULT: rgb("--cream"), deep: rgb("--cream-deep") },
-        card: rgb("--card"),
-        line: rgb("--line"),
-        rosa: {
-          50: rgb("--rosa-50"),
-          100: rgb("--rosa-100"),
-          200: rgb("--rosa-200"),
-          300: rgb("--rosa-300"),
-          400: rgb("--rosa-400"),
-          500: rgb("--rosa-500"),
-          600: rgb("--rosa-600"),
-          700: rgb("--rosa-700"),
-          800: rgb("--rosa-800"),
-          DEFAULT: rgb("--rosa-500"),
+        // Definidos como canales RGB en globals.css para que los modificadores
+        // de opacidad (bg-card/60, text-ink-faint/70…) funcionen siempre.
+        ivory: {
+          DEFAULT: "rgb(var(--ivory) / <alpha-value>)",
+          deep: "rgb(var(--ivory-deep) / <alpha-value>)",
         },
-        coral: {
-          50: rgb("--coral-50"),
-          100: rgb("--coral-100"),
-          300: rgb("--coral-300"),
-          400: rgb("--coral-400"),
-          500: rgb("--coral-500"),
-          600: rgb("--coral-600"),
-          DEFAULT: rgb("--coral-500"),
+        card: "rgb(var(--card) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        // verde sage (color de marca)
+        sage: {
+          50: "rgb(var(--sage-50) / <alpha-value>)",
+          100: "rgb(var(--sage-100) / <alpha-value>)",
+          200: "rgb(var(--sage-200) / <alpha-value>)",
+          300: "rgb(var(--sage-300) / <alpha-value>)",
+          400: "rgb(var(--sage-400) / <alpha-value>)",
+          500: "rgb(var(--sage-500) / <alpha-value>)",
+          600: "rgb(var(--sage-600) / <alpha-value>)",
+          700: "rgb(var(--sage-700) / <alpha-value>)",
+          800: "rgb(var(--sage-800) / <alpha-value>)",
+          DEFAULT: "rgb(var(--sage-600) / <alpha-value>)",
         },
-        agua: {
-          50: rgb("--agua-50"),
-          100: rgb("--agua-100"),
-          300: rgb("--agua-300"),
-          400: rgb("--agua-400"),
-          500: rgb("--agua-500"),
-          600: rgb("--agua-600"),
-          DEFAULT: rgb("--agua-500"),
-        },
-        sol: {
-          100: rgb("--sol-100"),
-          300: rgb("--sol-300"),
-          400: rgb("--sol-400"),
-          500: rgb("--sol-500"),
-          DEFAULT: rgb("--sol-400"),
-        },
+        // dorado suave (único acento decorativo)
         gold: {
-          soft: rgb("--gold-soft"),
-          DEFAULT: rgb("--gold"),
-          deep: rgb("--gold-deep"),
+          soft: "rgb(var(--gold-soft) / <alpha-value>)",
+          DEFAULT: "rgb(var(--gold) / <alpha-value>)",
+          deep: "rgb(var(--gold-deep) / <alpha-value>)",
         },
+        // tinta cálida
         ink: {
-          DEFAULT: rgb("--ink"),
-          soft: rgb("--ink-soft"),
-          faint: rgb("--ink-faint"),
+          DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+          soft: "rgb(var(--ink-soft) / <alpha-value>)",
+          faint: "rgb(var(--ink-faint) / <alpha-value>)",
         },
-        confirmed: rgb("--state-confirmed"),
-        pending: rgb("--state-pending"),
-        declined: rgb("--state-declined"),
-        maybe: rgb("--state-maybe"),
+        // estados (RSVP y demás), cálidos
+        confirmed: "rgb(var(--state-confirmed) / <alpha-value>)",
+        pending: "rgb(var(--state-pending) / <alpha-value>)",
+        declined: "rgb(var(--state-declined) / <alpha-value>)",
+        maybe: "rgb(var(--state-maybe) / <alpha-value>)",
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Fraunces", "Georgia", "serif"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Mulish", "system-ui", "sans-serif"],
       },
       letterSpacing: {
@@ -85,11 +66,12 @@ const config: Config = {
         "3xl": "2rem",
       },
       boxShadow: {
-        calm: "0 1px 2px rgba(43, 34, 48, 0.04), 0 14px 34px -18px rgba(167, 12, 84, 0.22)",
-        lift: "0 2px 6px rgba(43, 34, 48, 0.06), 0 28px 60px -26px rgba(167, 12, 84, 0.34)",
-        glow: "0 18px 50px -16px rgba(233, 30, 121, 0.45)",
+        // sombras tenues, nunca duras — todo debe respirar
+        calm: "0 1px 2px rgba(58, 63, 53, 0.04), 0 12px 30px -18px rgba(58, 63, 53, 0.18)",
+        lift: "0 2px 6px rgba(58, 63, 53, 0.05), 0 22px 50px -24px rgba(58, 63, 53, 0.26)",
       },
       transitionTimingFunction: {
+        // UNA sola curva de easing en toda la app (lección del documento)
         calm: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       keyframes: {
@@ -97,26 +79,13 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        float: {
-          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
-          "50%": { transform: "translate3d(0,-22px,0) scale(1.05)" },
-        },
-        drift: {
-          "0%": { transform: "translate3d(0,0,0)" },
-          "33%": { transform: "translate3d(28px,-18px,0)" },
-          "66%": { transform: "translate3d(-22px,14px,0)" },
-          "100%": { transform: "translate3d(0,0,0)" },
-        },
-        shimmer: {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "0.9" },
+        "draw-ring": {
+          from: { strokeDashoffset: "1" },
+          to: { strokeDashoffset: "0" },
         },
       },
       animation: {
         "fade-rise": "fade-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
-        float: "float 9s ease-in-out infinite",
-        drift: "drift 22s ease-in-out infinite",
-        shimmer: "shimmer 6s ease-in-out infinite",
       },
     },
   },

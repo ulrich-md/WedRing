@@ -27,7 +27,7 @@ export function WaitlistForm({
   variant = "light",
   id,
 }: {
-  /** "light" sobre marfil, "dark" sobre rosa */
+  /** "light" sobre marfil, "dark" sobre sage */
   variant?: "light" | "dark";
   id?: string;
 }) {
@@ -50,10 +50,10 @@ export function WaitlistForm({
       <div
         className={
           "flex items-center gap-3 rounded-full px-5 py-3.5 font-sans text-sm " +
-          (dark ? "bg-cream/12 text-cream" : "bg-rosa-50 text-rosa-700")
+          (dark ? "bg-ivory/12 text-ivory" : "bg-sage-50 text-sage-700")
         }
       >
-        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-rosa-600 text-cream">
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sage-600 text-ivory">
           <Check size={15} />
         </span>
         Listo, te avisamos en cuanto abramos. Sin spam, lo prometemos.
@@ -80,8 +80,8 @@ export function WaitlistForm({
         className={
           "h-12 flex-1 rounded-full px-5 font-sans text-[0.95rem] outline-none transition-colors duration-[250ms] ease-calm " +
           (dark
-            ? "border border-cream/25 bg-cream/10 text-cream placeholder:text-cream/55 focus:border-gold-soft"
-            : "border border-line bg-card text-ink placeholder:text-ink-faint/70 focus:border-rosa-300")
+            ? "border border-ivory/25 bg-ivory/10 text-ivory placeholder:text-ivory/55 focus:border-gold-soft"
+            : "border border-line bg-card text-ink placeholder:text-ink-faint/70 focus:border-sage-300")
         }
       />
       <Button

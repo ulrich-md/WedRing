@@ -13,12 +13,12 @@ export function CountdownHero({ wedding }: { wedding: Wedding }) {
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-line bg-card px-7 py-9 shadow-calm sm:px-10 sm:py-11">
-      {/* lavado de color festivo: rosa mexicano + sol */}
+      {/* lavado de color tenue con el sage y el dorado, nunca saturado */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-80"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(115% 95% at 100% 0%, rgba(233,30,121,0.10), transparent 55%), radial-gradient(85% 85% at 0% 100%, rgba(255,194,51,0.14), transparent 60%)",
+            "radial-gradient(110% 90% at 100% 0%, rgba(194,163,107,0.10), transparent 55%), radial-gradient(80% 80% at 0% 100%, rgba(111,129,89,0.08), transparent 60%)",
         }}
       />
       <div className="relative">
@@ -38,7 +38,7 @@ export function CountdownHero({ wedding }: { wedding: Wedding }) {
           <div className="text-right">
             {c.hasDate ? (
               <>
-                <p className="font-serif text-5xl leading-none text-rosa-600">
+                <p className="font-serif text-5xl leading-none text-sage-600">
                   {c.days}
                 </p>
                 <p className="mt-1 font-sans text-sm text-ink-faint">
@@ -48,7 +48,7 @@ export function CountdownHero({ wedding }: { wedding: Wedding }) {
             ) : (
               <Link
                 href="/configuracion"
-                className="inline-flex items-center gap-1.5 font-sans text-sm text-rosa-600 hover:text-rosa-700"
+                className="inline-flex items-center gap-1.5 font-sans text-sm text-sage-600 hover:text-sage-700"
               >
                 <Pencil size={14} /> Pon tu fecha
               </Link>

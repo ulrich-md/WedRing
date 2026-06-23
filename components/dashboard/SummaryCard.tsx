@@ -23,7 +23,7 @@ export function SummaryCard({
   label: string;
   value: string;
   sub: string;
-  /** 0–100; si se da, dibuja una barra calmada en rosa */
+  /** 0–100; si se da, dibuja una barra calmada en sage */
   progress?: number;
   cta?: string;
 }) {
@@ -31,10 +31,10 @@ export function SummaryCard({
     <RevealItem>
       <Link
         href={href}
-        className="group flex h-full flex-col rounded-2xl border border-line bg-card p-6 shadow-calm transition-all duration-[250ms] ease-calm hover:-translate-y-0.5 hover:border-rosa-200 hover:shadow-lift"
+        className="group flex h-full flex-col rounded-2xl border border-line bg-card p-6 shadow-calm transition-all duration-[250ms] ease-calm hover:-translate-y-0.5 hover:border-sage-200 hover:shadow-lift"
       >
         <div className="flex items-center justify-between">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-rosa-50 text-rosa-600">
+          <span className="grid h-10 w-10 place-items-center rounded-xl bg-sage-50 text-sage-600">
             <Icon size={19} />
           </span>
           <ArrowUpRight
@@ -51,9 +51,9 @@ export function SummaryCard({
         </p>
 
         {typeof progress === "number" && (
-          <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-rosa-50">
+          <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-sage-50">
             <div
-              className="h-full rounded-full bg-rosa-400 transition-[width] duration-[850ms] ease-calm"
+              className="h-full rounded-full bg-sage-400 transition-[width] duration-[850ms] ease-calm"
               style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
             />
           </div>
@@ -64,7 +64,7 @@ export function SummaryCard({
         </p>
 
         {cta && (
-          <span className="mt-auto pt-4 font-sans text-sm font-medium text-rosa-600">
+          <span className="mt-auto pt-4 font-sans text-sm font-medium text-sage-600">
             {cta}
           </span>
         )}

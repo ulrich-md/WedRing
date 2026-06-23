@@ -3,66 +3,46 @@
 @tailwind utilities;
 
 /* ──────────────────────────────────────────────────────────────
-   wedRing — identidad de marca (rediseño festivo)
-   Alma mexicana, vibrante y divertida: rosa mexicano, cempasúchil,
-   talavera y sol. Romántica pero con fiesta. Colores en canales RGB
-   para soportar opacidad en Tailwind; úsalos en CSS/SVG con rgb(var(--x)).
+   wedRing — tokens de diseño
+   Calma, no estrés. Cálida y humana. Quiet luxury con alma mexicana.
+   Marfil + sage + dorado suave. Mucho aire, nada amontonado.
    ────────────────────────────────────────────────────────────── */
 :root {
-  /* superficies — crema cálida (papel) */
-  --cream: 255 247 237;
-  --cream-deep: 253 236 218;
-  --card: 255 252 247;
-  --line: 240 226 210;
+  /* Colores en canales RGB (sin coma) para soportar opacidad en Tailwind.
+     Úsalos en CSS/SVG con rgb(var(--x)). */
 
-  /* ROSA MEXICANO — color de marca primario */
-  --rosa-50: 255 234 243;
-  --rosa-100: 255 210 230;
-  --rosa-200: 255 166 207;
-  --rosa-300: 255 117 178;
-  --rosa-400: 251 79 151;
-  --rosa-500: 233 30 121;
-  --rosa-600: 209 14 104;
-  --rosa-700: 167 12 84;
-  --rosa-800: 122 14 63;
+  /* superficies — marfil cálido */
+  --ivory: 250 246 239;
+  --ivory-deep: 242 235 221;
+  --card: 255 253 249;
+  --line: 236 228 213;
 
-  /* CEMPASÚCHIL — coral / naranja marigold */
-  --coral-50: 255 237 224;
-  --coral-100: 255 217 191;
-  --coral-300: 255 164 92;
-  --coral-400: 255 133 52;
-  --coral-500: 251 101 20;
-  --coral-600: 224 83 10;
+  /* verde sage — color de marca */
+  --sage-50: 241 244 236;
+  --sage-100: 227 233 216;
+  --sage-200: 200 211 180;
+  --sage-300: 168 183 144;
+  --sage-400: 138 155 115;
+  --sage-500: 111 129 89;
+  --sage-600: 92 107 73;
+  --sage-700: 71 84 58;
+  --sage-800: 56 66 47;
 
-  /* TALAVERA — turquesa / agua */
-  --agua-50: 214 245 241;
-  --agua-100: 199 240 236;
-  --agua-300: 95 214 204;
-  --agua-400: 34 192 181;
-  --agua-500: 14 168 157;
-  --agua-600: 11 138 130;
+  /* dorado suave — único acento decorativo */
+  --gold-soft: 236 220 184;
+  --gold: 194 163 107;
+  --gold-deep: 164 133 76;
 
-  /* SOL — amarillo */
-  --sol-100: 255 240 199;
-  --sol-300: 255 214 107;
-  --sol-400: 255 194 51;
-  --sol-500: 245 168 0;
+  /* tinta cálida (nunca negro puro) */
+  --ink: 52 56 46;
+  --ink-soft: 95 100 87;
+  --ink-faint: 141 145 130;
 
-  /* dorado — para el anillo y detalles premium */
-  --gold-soft: 255 224 165;
-  --gold: 240 178 64;
-  --gold-deep: 201 141 38;
-
-  /* tinta cálida (ciruela profunda, nunca negro puro) */
-  --ink: 43 34 48;
-  --ink-soft: 107 94 102;
-  --ink-faint: 156 142 150;
-
-  /* estados — RSVP y demás */
-  --state-confirmed: 31 169 113; /* verde */
-  --state-pending: 245 168 0;    /* sol */
-  --state-declined: 239 90 60;   /* coral-rojo */
-  --state-maybe: 79 184 232;     /* cielo */
+  /* estados — cálidos, nunca chillones */
+  --state-confirmed: 92 107 73; /* sage */
+  --state-pending: 194 163 107; /* dorado */
+  --state-declined: 176 122 102; /* terracota suave */
+  --state-maybe: 154 148 134; /* gris cálido */
 
   /* movimiento — UNA curva, duraciones que escalan con el tamaño */
   --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
@@ -78,9 +58,10 @@
   }
 
   body {
-    background-color: rgb(var(--cream));
+    background-color: rgb(var(--ivory));
     color: rgb(var(--ink));
     font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
   }
 
   h1,
@@ -89,59 +70,41 @@
   h4 {
     font-family: var(--font-serif), Georgia, serif;
     color: rgb(var(--ink));
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
-  /* foco visible y cálido (rosa mexicano), nunca el azul de sistema */
+  /* foco visible y cálido (dorado), nunca el azul de sistema */
   :focus-visible {
-    outline: 2px solid rgb(var(--rosa-500));
+    outline: 2px solid rgb(var(--gold));
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: 4px;
   }
 
   ::selection {
-    background: rgb(var(--rosa-200));
+    background: rgb(var(--gold-soft));
     color: rgb(var(--ink));
   }
 }
 
 @layer components {
-  /* etiqueta superior — el "eyebrow", ahora festivo */
+  /* etiqueta superior — el "eyebrow" calmado */
   .eyebrow {
-    @apply font-sans text-[0.72rem] font-semibold uppercase tracking-eyebrow text-rosa-500;
+    @apply font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink-faint;
   }
 
-  /* tarjeta base */
+  /* tarjeta tranquila base */
   .card-calm {
     @apply rounded-2xl border border-line bg-card shadow-calm;
   }
 
-  /* hairline dorado sutil */
+  /* un hairline dorado sutil, para detalles premium */
   .rule-gold {
-    @apply h-px w-12 bg-gold/70;
-  }
-
-  /* texto con degradado de fiesta (rosa → coral) para titulares */
-  .text-fiesta {
-    background-image: linear-gradient(
-      100deg,
-      rgb(var(--rosa-500)),
-      rgb(var(--coral-500)) 65%,
-      rgb(var(--sol-500))
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* superficie de vidrio (glassmorphism) sobre fondos vibrantes */
-  .glass {
-    @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+    @apply h-px w-12 bg-gold/60;
   }
 }
 
-/* Respeta a quien prefiere menos movimiento. */
+/* Respeta a quien prefiere menos movimiento. La calma también es accesible. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

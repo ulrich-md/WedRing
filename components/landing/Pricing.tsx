@@ -35,10 +35,10 @@ export function Pricing() {
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {/* Gratis */}
           <SectionReveal>
-            <div className="flex h-full flex-col rounded-3xl border border-rosa-200 bg-rosa-50 p-8 shadow-calm">
+            <div className="flex h-full flex-col rounded-3xl border border-sage-200 bg-sage-50 p-8 shadow-calm">
               <div className="flex items-baseline justify-between">
                 <h3 className="font-serif text-2xl text-ink">Gratis</h3>
-                <span className="font-serif text-3xl text-rosa-600">$0</span>
+                <span className="font-serif text-3xl text-sage-600">$0</span>
               </div>
               <p className="mt-1 font-sans text-sm text-ink-soft">
                 Todo lo que necesitas para tu boda.
@@ -46,7 +46,7 @@ export function Pricing() {
               <ul className="mt-6 space-y-3">
                 {FREE.map((t) => (
                   <li key={t} className="flex items-center gap-3 font-sans text-ink">
-                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rosa-600 text-cream">
+                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sage-600 text-ivory">
                       <Check size={12} />
                     </span>
                     {t}
@@ -55,7 +55,7 @@ export function Pricing() {
               </ul>
               <a
                 href="#lista"
-                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-rosa-600 px-6 font-sans font-medium text-cream transition-colors duration-[250ms] ease-calm hover:bg-rosa-700"
+                className="mt-8 inline-flex h-12 items-center justify-center rounded-full bg-sage-600 px-6 font-sans font-medium text-ivory transition-colors duration-[250ms] ease-calm hover:bg-sage-700"
               >
                 Apúntate a la lista
               </a>
@@ -80,7 +80,7 @@ export function Pricing() {
                     key={t}
                     className="flex items-center gap-3 font-sans text-ink-soft"
                   >
-                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rosa-50 text-rosa-500">
+                    <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sage-50 text-sage-500">
                       <Check size={12} />
                     </span>
                     {t}
