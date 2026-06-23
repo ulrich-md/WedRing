@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ──────────────────────────────────────────────────────────────
+   wedRing — tokens de diseño
+   Calma, no estrés. Cálida y humana. Quiet luxury con alma mexicana.
+   Marfil + sage + dorado suave. Mucho aire, nada amontonado.
+   ────────────────────────────────────────────────────────────── */
+:root {
+  /* Colores en canales RGB (sin coma) para soportar opacidad en Tailwind.
+     Úsalos en CSS/SVG con rgb(var(--x)). */
+
+  /* superficies — marfil cálido */
+  --ivory: 250 246 239;
+  --ivory-deep: 242 235 221;
+  --card: 255 253 249;
+  --line: 236 228 213;
+
+  /* verde sage — color de marca */
+  --sage-50: 241 244 236;
+  --sage-100: 227 233 216;
+  --sage-200: 200 211 180;
+  --sage-300: 168 183 144;
+  --sage-400: 138 155 115;
+  --sage-500: 111 129 89;
+  --sage-600: 92 107 73;
+  --sage-700: 71 84 58;
+  --sage-800: 56 66 47;
+
+  /* dorado suave — único acento decorativo */
+  --gold-soft: 236 220 184;
+  --gold: 194 163 107;
+  --gold-deep: 164 133 76;
+
+  /* tinta cálida (nunca negro puro) */
+  --ink: 52 56 46;
+  --ink-soft: 95 100 87;
+  --ink-faint: 141 145 130;
+
+  /* estados — cálidos, nunca chillones */
+  --state-confirmed: 92 107 73; /* sage */
+  --state-pending: 194 163 107; /* dorado */
+  --state-declined: 176 122 102; /* terracota suave */
+  --state-maybe: 154 148 134; /* gris cálido */
+
+  /* movimiento — UNA curva, duraciones que escalan con el tamaño */
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.85s;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--ivory));
+    color: rgb(var(--ink));
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif), Georgia, serif;
+    color: rgb(var(--ink));
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  /* foco visible y cálido (dorado), nunca el azul de sistema */
+  :focus-visible {
+    outline: 2px solid rgb(var(--gold));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgb(var(--gold-soft));
+    color: rgb(var(--ink));
+  }
+}
+
+@layer components {
+  /* etiqueta superior — el "eyebrow" calmado */
+  .eyebrow {
+    @apply font-sans text-[0.72rem] uppercase tracking-eyebrow text-ink-faint;
+  }
+
+  /* tarjeta tranquila base */
+  .card-calm {
+    @apply rounded-2xl border border-line bg-card shadow-calm;
+  }
+
+  /* un hairline dorado sutil, para detalles premium */
+  .rule-gold {
+    @apply h-px w-12 bg-gold/60;
+  }
+}
+
+/* Respeta a quien prefiere menos movimiento. La calma también es accesible. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
