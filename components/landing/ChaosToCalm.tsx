@@ -30,7 +30,7 @@ export function ChaosToCalm() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           <SectionReveal>
-            <div className="h-full rounded-3xl border border-line bg-ivory-deep/50 p-7">
+            <div className="h-full rounded-3xl border border-line bg-cream-deep/50 p-7">
               <p className="font-sans text-sm font-medium text-ink-faint">
                 Sin wedRing
               </p>
@@ -51,8 +51,8 @@ export function ChaosToCalm() {
           </SectionReveal>
 
           <SectionReveal delay={0.08}>
-            <div className="h-full rounded-3xl border border-sage-200 bg-sage-50 p-7 shadow-calm">
-              <p className="font-sans text-sm font-medium text-sage-700">
+            <div className="h-full rounded-3xl border border-rosa-200 bg-rosa-50 p-7 shadow-calm">
+              <p className="font-sans text-sm font-medium text-rosa-700">
                 Con wedRing
               </p>
               <ul className="mt-5 space-y-3.5">
@@ -61,7 +61,7 @@ export function ChaosToCalm() {
                     key={t}
                     className="flex items-center gap-3 font-sans text-ink"
                   >
-                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-sage-600 text-ivory">
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-rosa-600 text-cream">
                       <Check size={14} />
                     </span>
                     {t}

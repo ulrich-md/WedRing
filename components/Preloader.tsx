@@ -39,7 +39,7 @@ export function Preloader() {
     <AnimatePresence>
       {!done && (
         <motion.div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-ivory"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-cream"
           initial={{ opacity: 1 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 0.85, ease: EASE_CALM }}
@@ -57,7 +57,7 @@ export function Preloader() {
               cx="19"
               cy="24"
               r="11"
-              stroke="rgb(var(--sage-500))"
+              stroke="rgb(var(--rosa-500))"
               strokeWidth="1.6"
               pathLength={1}
               initial={{ pathLength: 0 }}
@@ -83,7 +83,7 @@ export function Preloader() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE_CALM, delay: 0.4 }}
           >
-            wed<span className="text-sage-600">Ring</span>
+            wed<span className="text-rosa-600">Ring</span>
           </motion.span>
         </motion.div>
       )}

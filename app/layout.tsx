@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Mulish } from "next/font/google";
+import { Fraunces, Mulish } from "next/font/google";
 import "./globals.css";
 import { WeddingProvider } from "@/components/providers/WeddingProvider";
 import { Preloader } from "@/components/Preloader";
 
-// Serif elegante y cálido para títulos; sans humanista para el cuerpo.
-// Ambas con soporte completo de acentos en español.
-const serif = Cormorant_Garamond({
+// Fraunces: serif expresivo y cálido (divertido pero con clase) para títulos.
+// Mulish: sans humanista para el cuerpo. Ambas con acentos en español.
+const serif = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "900"],
+  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });
@@ -21,13 +22,13 @@ const sans = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "wedRing — planea tu boda con calma",
+  title: "wedRing — planea tu boda en WhatsApp, sin estrés",
   description:
-    "El hogar tranquilo donde planeas tu boda, y vive donde ya estás: WhatsApp. RSVP, invitados, presupuesto y más, sin estrés.",
+    "La app mexicana para planear tu boda con alma: RSVP por WhatsApp, invitados, presupuesto, padrinos y tu web de boda. Vibrante, fácil y gratis.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#faf6ef",
+  themeColor: "#FFF7ED",
   width: "device-width",
   initialScale: 1,
 };
@@ -39,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${serif.variable} ${sans.variable}`}>
-      <body className="min-h-dvh bg-ivory text-ink antialiased">
+      <body className="min-h-dvh bg-cream text-ink antialiased">
         <WeddingProvider>
           <Preloader />
           {children}

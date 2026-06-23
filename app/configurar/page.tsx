@@ -157,8 +157,8 @@ export default function ConfigurarPage() {
                         className={
                           "flex items-center gap-3 rounded-2xl border p-3.5 text-left transition-all duration-[250ms] ease-calm " +
                           (draft.palette.name === p.name
-                            ? "border-sage-300 bg-sage-50 shadow-calm"
-                            : "border-line bg-card hover:border-sage-200")
+                            ? "border-rosa-300 bg-rosa-50 shadow-calm"
+                            : "border-line bg-card hover:border-rosa-200")
                         }
                       >
                         <span
@@ -220,9 +220,9 @@ function StepDots({ step }: { step: number }) {
             className={
               "font-sans text-sm transition-colors duration-[250ms] ease-calm " +
               (i === step
-                ? "font-semibold text-sage-700"
+                ? "font-semibold text-rosa-700"
                 : i < step
-                  ? "text-sage-500"
+                  ? "text-rosa-500"
                   : "text-ink-faint/60")
             }
           >
@@ -284,7 +284,7 @@ function TextField({
         autoFocus={autoFocus}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-sage-300 focus:outline-none"
+        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-rosa-300 focus:outline-none"
       />
     </label>
   );
@@ -307,8 +307,8 @@ function ChoiceCard({
       className={
         "rounded-2xl border p-4 text-left transition-all duration-[250ms] ease-calm " +
         (active
-          ? "border-sage-300 bg-sage-50 shadow-calm"
-          : "border-line bg-card hover:border-sage-200")
+          ? "border-rosa-300 bg-rosa-50 shadow-calm"
+          : "border-line bg-card hover:border-rosa-200")
       }
     >
       <span className="block font-serif text-lg text-ink">{title}</span>

@@ -31,7 +31,7 @@ export default function LoginPage() {
   return (
     <main className="grid min-h-dvh lg:grid-cols-[1.05fr_1fr]">
       {/* Panel de vibra — solo desktop. Sage profundo, anillo dorado, una frase cálida. */}
-      <aside className="relative hidden overflow-hidden bg-sage-700 lg:flex lg:flex-col lg:justify-between lg:p-14">
+      <aside className="relative hidden overflow-hidden bg-rosa-700 lg:flex lg:flex-col lg:justify-between lg:p-14">
         <div
           className="pointer-events-none absolute inset-0 opacity-60"
           style={{
@@ -39,7 +39,7 @@ export default function LoginPage() {
               "radial-gradient(120% 80% at 80% 10%, rgba(194,163,107,0.22), transparent 55%), radial-gradient(90% 70% at 10% 100%, rgba(255,253,249,0.10), transparent 60%)",
           }}
         />
-        <div className="relative flex items-center gap-3 text-ivory">
+        <div className="relative flex items-center gap-3 text-cream">
           <RingMark size={36} />
           <span className="font-serif text-2xl">
             wed<span className="text-gold-soft">Ring</span>
@@ -53,16 +53,16 @@ export default function LoginPage() {
           transition={{ duration: 0.8, ease: EASE_CALM, delay: 0.2 }}
         >
           <div className="rule-gold mb-7" />
-          <p className="font-serif text-[2.1rem] leading-[1.25] text-ivory">
+          <p className="font-serif text-[2.1rem] leading-[1.25] text-cream">
             Tranquila. Yo te ayudo a ponerlo en orden.
           </p>
-          <p className="mt-5 max-w-sm font-sans text-sage-100/90">
+          <p className="mt-5 max-w-sm font-sans text-rosa-100/90">
             Tu boda como tú la imaginas, a tu ritmo. Todo en un solo lugar
             ordenado —y donde ya estás: WhatsApp.
           </p>
         </motion.div>
 
-        <p className="relative font-sans text-sm text-sage-200/70">
+        <p className="relative font-sans text-sm text-rosa-200/70">
           Hecho en México · para bodas con alma
         </p>
       </aside>
@@ -89,7 +89,7 @@ export default function LoginPage() {
           </p>
 
           {/* Método: WhatsApp por defecto (es el corazón de wedRing) */}
-          <div className="mt-8 grid grid-cols-2 gap-2 rounded-full bg-sage-50 p-1">
+          <div className="mt-8 grid grid-cols-2 gap-2 rounded-full bg-rosa-50 p-1">
             <MethodTab
               active={method === "whatsapp"}
               onClick={() => setMethod("whatsapp")}
@@ -160,7 +160,7 @@ function MethodTab({
       className={
         "flex h-10 items-center justify-center gap-2 rounded-full font-sans text-sm font-medium transition-colors duration-[250ms] ease-calm " +
         (active
-          ? "bg-card text-sage-700 shadow-calm"
+          ? "bg-card text-rosa-700 shadow-calm"
           : "text-ink-faint hover:text-ink-soft")
       }
     >
@@ -196,7 +196,7 @@ function Field({
         autoFocus={autoFocus}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-sage-300 focus:outline-none"
+        className="h-12 w-full rounded-xl border border-line bg-card px-4 font-sans text-ink placeholder:text-ink-faint/70 transition-colors duration-[250ms] ease-calm focus:border-rosa-300 focus:outline-none"
       />
     </label>
   );

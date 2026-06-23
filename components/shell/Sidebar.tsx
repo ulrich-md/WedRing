@@ -32,13 +32,13 @@ export function Sidebar() {
               className={
                 "group flex items-center gap-3 rounded-xl px-3 py-2.5 font-sans text-[0.95rem] transition-colors duration-[250ms] ease-calm " +
                 (active
-                  ? "bg-sage-50 text-sage-700"
-                  : "text-ink-soft hover:bg-sage-50/60 hover:text-ink")
+                  ? "bg-rosa-50 text-rosa-700"
+                  : "text-ink-soft hover:bg-rosa-50/60 hover:text-ink")
               }
             >
               <Icon
                 size={18}
-                className={active ? "text-sage-600" : "text-ink-faint"}
+                className={active ? "text-rosa-600" : "text-ink-faint"}
               />
               <span className="font-medium">{item.label}</span>
               {!item.ready && (
@@ -52,7 +52,7 @@ export function Sidebar() {
       </nav>
 
       {/* Recordatorio cálido al pie: la cuenta regresiva */}
-      <div className="mt-4 rounded-2xl border border-line bg-ivory px-4 py-4">
+      <div className="mt-4 rounded-2xl border border-line bg-cream px-4 py-4">
         <p className="font-serif text-lg leading-tight text-ink">
           {coupleName(wedding)}
         </p>

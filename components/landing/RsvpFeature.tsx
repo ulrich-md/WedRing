@@ -55,7 +55,7 @@ export function RsvpFeature() {
             {STEPS.map((s, i) => (
               <SectionReveal key={s.title} delay={0.06 * i}>
                 <div className="flex gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-50 text-sage-600">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-rosa-50 text-rosa-600">
                     <s.icon size={18} />
                   </span>
                   <div>
@@ -71,7 +71,7 @@ export function RsvpFeature() {
 
           <SectionReveal delay={0.1}>
             <div className="mt-9 flex items-center gap-4 rounded-2xl border border-line bg-card px-6 py-5">
-              <p className="font-serif text-4xl leading-none text-sage-600">
+              <p className="font-serif text-4xl leading-none text-rosa-600">
                 <CountUp to={84} />
               </p>
               <p className="font-sans text-sm text-ink-soft">

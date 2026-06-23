@@ -10,10 +10,10 @@ const base =
   "focus-visible:outline-gold disabled:opacity-50 disabled:pointer-events-none active:scale-[0.985]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-sage-600 text-ivory hover:bg-sage-700 shadow-calm",
-  gold: "bg-gold text-ink hover:bg-gold-deep hover:text-ivory shadow-calm",
-  soft: "bg-sage-50 text-sage-700 hover:bg-sage-100",
-  ghost: "text-ink-soft hover:text-ink hover:bg-sage-50",
+  primary: "bg-rosa-600 text-cream hover:bg-rosa-700 shadow-calm",
+  gold: "bg-gold text-ink hover:bg-gold-deep hover:text-cream shadow-calm",
+  soft: "bg-rosa-50 text-rosa-700 hover:bg-rosa-100",
+  ghost: "text-ink-soft hover:text-ink hover:bg-rosa-50",
 };
 
 const sizes: Record<Size, string> = {

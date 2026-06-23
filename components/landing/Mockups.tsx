@@ -13,7 +13,7 @@ export function TableroMockup() {
   return (
     <div className="w-full overflow-hidden rounded-[1.4rem] border border-line bg-card shadow-lift">
       {/* barra del navegador */}
-      <div className="flex items-center gap-2 border-b border-line bg-ivory/70 px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-line bg-cream/70 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-declined/60" />
         <span className="h-2.5 w-2.5 rounded-full bg-pending/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-confirmed/60" />
@@ -30,7 +30,7 @@ export function TableroMockup() {
             Sofía <span className="text-gold">&</span> Mateo
           </h3>
           <div className="text-right">
-            <p className="font-serif text-3xl leading-none text-sage-600 sm:text-4xl">
+            <p className="font-serif text-3xl leading-none text-rosa-600 sm:text-4xl">
               148
             </p>
             <p className="font-sans text-[0.68rem] text-ink-faint">días</p>
@@ -38,9 +38,9 @@ export function TableroMockup() {
         </div>
 
         {/* franja del corazón: RSVP */}
-        <div className="mt-5 flex items-center gap-3 rounded-2xl bg-sage-700 px-4 py-3">
+        <div className="mt-5 flex items-center gap-3 rounded-2xl bg-rosa-700 px-4 py-3">
           <MessageCircle size={16} className="shrink-0 text-gold-soft" />
-          <span className="font-sans text-[0.8rem] text-ivory">
+          <span className="font-sans text-[0.8rem] text-cream">
             84 confirmados por WhatsApp
           </span>
         </div>
@@ -76,16 +76,16 @@ function MiniCard({
   progress?: number;
 }) {
   return (
-    <div className="rounded-xl border border-line bg-ivory/50 p-3.5">
-      <span className="grid h-7 w-7 place-items-center rounded-lg bg-sage-50 text-sage-600">
+    <div className="rounded-xl border border-line bg-cream/50 p-3.5">
+      <span className="grid h-7 w-7 place-items-center rounded-lg bg-rosa-50 text-rosa-600">
         {icon}
       </span>
       <p className="mt-2.5 font-sans text-[0.68rem] text-ink-faint">{label}</p>
       <p className="font-serif text-lg leading-none text-ink">{value}</p>
       {typeof progress === "number" && (
-        <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-sage-50">
+        <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-rosa-50">
           <div
-            className="h-full rounded-full bg-sage-400"
+            className="h-full rounded-full bg-rosa-400"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -98,9 +98,9 @@ function MiniCard({
 export function RsvpPhoneMockup() {
   return (
     <div className="relative mx-auto w-[16rem] sm:w-[17.5rem]">
-      <div className="overflow-hidden rounded-[2.2rem] border-[6px] border-sage-800 bg-card shadow-lift">
+      <div className="overflow-hidden rounded-[2.2rem] border-[6px] border-rosa-800 bg-card shadow-lift">
         {/* notch */}
-        <div className="relative bg-ivory pt-5">
+        <div className="relative bg-cream pt-5">
           <span className="absolute left-1/2 top-2 h-1 w-12 -translate-x-1/2 rounded-full bg-line" />
           <div className="px-5 pb-6 pt-2 text-center">
             <RingMark size={30} className="mx-auto" />
@@ -138,7 +138,7 @@ export function RsvpPhoneMockup() {
         <p className="font-sans text-[0.6rem] uppercase tracking-eyebrow text-ink-faint">
           En vivo
         </p>
-        <p className="font-serif text-xl leading-none text-sage-600">+1</p>
+        <p className="font-serif text-xl leading-none text-rosa-600">+1</p>
       </div>
     </div>
   );
@@ -158,14 +158,14 @@ function RsvpOption({
       className={
         "flex items-center gap-2.5 rounded-full px-4 py-2.5 font-sans text-[0.8rem] " +
         (active
-          ? "bg-sage-600 font-medium text-ivory"
+          ? "bg-rosa-600 font-medium text-cream"
           : "border border-line bg-card text-ink-soft")
       }
     >
       <span
         className={
           "grid h-5 w-5 place-items-center rounded-full " +
-          (active ? "bg-ivory/20 text-ivory" : "bg-sage-50 text-sage-500")
+          (active ? "bg-cream/20 text-cream" : "bg-rosa-50 text-rosa-500")
         }
       >
         {icon}

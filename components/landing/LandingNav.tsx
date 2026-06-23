@@ -29,7 +29,7 @@ export function LandingNav() {
         className={
           "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all duration-[250ms] ease-calm sm:px-5 " +
           (scrolled
-            ? "border border-line bg-ivory/85 shadow-calm backdrop-blur"
+            ? "glass shadow-calm"
             : "border border-transparent bg-transparent")
         }
       >
@@ -53,7 +53,7 @@ export function LandingNav() {
         <div className="flex items-center gap-1.5">
           <Link
             href="/login"
-            className="hidden rounded-full px-4 py-2 font-sans text-sm text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-sage-50 hover:text-ink sm:inline-flex"
+            className="hidden rounded-full px-4 py-2 font-sans text-sm text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-rosa-50 hover:text-ink sm:inline-flex"
           >
             Ver adelanto
           </Link>

@@ -25,13 +25,13 @@ export function MobileNav() {
                 size={21}
                 className={
                   "transition-colors duration-[250ms] ease-calm " +
-                  (active ? "text-sage-600" : "text-ink-faint")
+                  (active ? "text-rosa-600" : "text-ink-faint")
                 }
               />
               <span
                 className={
                   "font-sans text-[0.68rem] transition-colors duration-[250ms] ease-calm " +
-                  (active ? "font-semibold text-sage-700" : "text-ink-faint")
+                  (active ? "font-semibold text-rosa-700" : "text-ink-faint")
                 }
               >
                 {item.label}

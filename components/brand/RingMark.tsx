@@ -1,4 +1,4 @@
-// Marca de wedRing: dos anillos entrelazados. Sutil, dorado suave sobre sage.
+// Marca de wedRing: dos anillos entrelazados. Sutil, dorado suave sobre rosa.
 // Sin estridencias — es un detalle, no un logo gritón.
 
 export function RingMark({
@@ -17,7 +17,7 @@ export function RingMark({
       className={className}
       aria-hidden="true"
     >
-      <circle cx="19" cy="24" r="11" stroke="rgb(var(--sage-500))" strokeWidth="2" />
+      <circle cx="19" cy="24" r="11" stroke="rgb(var(--rosa-500))" strokeWidth="2" />
       <circle cx="29" cy="24" r="11" stroke="rgb(var(--gold))" strokeWidth="2" />
     </svg>
   );
@@ -31,7 +31,7 @@ export function Wordmark({ className }: { className?: string }) {
         (className ?? "")
       }
     >
-      wed<span className="text-sage-600">Ring</span>
+      wed<span className="text-rosa-600">Ring</span>
     </span>
   );
 }

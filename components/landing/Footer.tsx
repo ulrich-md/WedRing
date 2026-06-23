@@ -41,14 +41,14 @@ export function Footer() {
             <a
               href="#"
               aria-label="Instagram de wedRing"
-              className="grid h-9 w-9 place-items-center rounded-full border border-line text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-sage-50 hover:text-ink"
+              className="grid h-9 w-9 place-items-center rounded-full border border-line text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-rosa-50 hover:text-ink"
             >
               <Instagram size={16} />
             </a>
             <a
               href="#"
               aria-label="WhatsApp de wedRing"
-              className="grid h-9 w-9 place-items-center rounded-full border border-line text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-sage-50 hover:text-ink"
+              className="grid h-9 w-9 place-items-center rounded-full border border-line text-ink-soft transition-colors duration-[250ms] ease-calm hover:bg-rosa-50 hover:text-ink"
             >
               <MessageCircle size={16} />
             </a>

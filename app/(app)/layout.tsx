@@ -21,7 +21,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   if (!ready || !session || !wedding) {
     return (
-      <main className="grid min-h-dvh place-items-center bg-ivory">
+      <main className="grid min-h-dvh place-items-center bg-cream">
         <RingMark size={42} className="animate-pulse opacity-70" />
       </main>
     );

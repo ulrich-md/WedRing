@@ -14,7 +14,7 @@ export function NextStepCard() {
     <Reveal>
       <Link
         href="/invitados"
-        className="group relative block overflow-hidden rounded-3xl bg-sage-700 px-7 py-8 shadow-calm transition-all duration-[250ms] ease-calm hover:-translate-y-0.5 hover:shadow-lift sm:px-9"
+        className="group relative block overflow-hidden rounded-3xl bg-rosa-700 px-7 py-8 shadow-calm transition-all duration-[250ms] ease-calm hover:-translate-y-0.5 hover:shadow-lift sm:px-9"
       >
         <div
           className="pointer-events-none absolute inset-0 opacity-70"
@@ -25,17 +25,17 @@ export function NextStepCard() {
         />
         <div className="relative flex items-center justify-between gap-6">
           <div className="max-w-lg">
-            <span className="inline-flex items-center gap-2 rounded-full bg-ivory/10 px-3 py-1 font-sans text-xs font-medium uppercase tracking-wide text-gold-soft">
+            <span className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-3 py-1 font-sans text-xs font-medium uppercase tracking-wide text-gold-soft">
               <MessageCircle size={13} /> El corazón
             </span>
-            <h2 className="mt-3 font-serif text-[1.7rem] leading-tight text-ivory">
+            <h2 className="mt-3 font-serif text-[1.7rem] leading-tight text-cream">
               Confirma a tus invitados por WhatsApp
             </h2>
-            <p className="mt-2 font-sans text-sage-100/90">
+            <p className="mt-2 font-sans text-rosa-100/90">
               Cada invitado recibe su link personal y confirma en segundos. Tu
               conteo se actualiza solo. Empecemos por aquí.
             </p>
-            <span className="mt-5 inline-flex items-center gap-2 font-sans text-sm font-semibold text-ivory">
+            <span className="mt-5 inline-flex items-center gap-2 font-sans text-sm font-semibold text-cream">
               Crear mi lista de invitados
               <ArrowRight
                 size={17}
