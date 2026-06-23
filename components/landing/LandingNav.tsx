@@ -27,10 +27,10 @@ export function LandingNav() {
     <div className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         className={
-          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-4 py-2.5 transition-all duration-[250ms] ease-calm sm:px-5 " +
+          "flex w-full max-w-5xl items-center justify-between gap-4 rounded-full px-4 py-2.5 backdrop-blur transition-all duration-[250ms] ease-calm sm:px-5 " +
           (scrolled
-            ? "border border-line bg-ivory/85 shadow-calm backdrop-blur"
-            : "border border-transparent bg-transparent")
+            ? "border border-line bg-ivory/90 shadow-lift"
+            : "border border-ivory/50 bg-ivory/75 shadow-calm")
         }
       >
         <Link href="/" className="flex items-center gap-2.5">
