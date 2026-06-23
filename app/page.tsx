@@ -1,30 +1,35 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useWedding } from "@/components/providers/WeddingProvider";
-import { RingMark } from "@/components/brand/RingMark";
+import { SmoothScroll } from "@/components/landing/SmoothScroll";
+import { LandingNav } from "@/components/landing/LandingNav";
+import { Hero } from "@/components/landing/Hero";
+import { ChaosToCalm } from "@/components/landing/ChaosToCalm";
+import { RsvpFeature } from "@/components/landing/RsvpFeature";
+import { FeatureBento } from "@/components/landing/FeatureBento";
+import { MexicanSoul } from "@/components/landing/MexicanSoul";
+import { Pricing } from "@/components/landing/Pricing";
+import { FinalCta } from "@/components/landing/FinalCta";
+import { Footer } from "@/components/landing/Footer";
 
 /**
- * Punto de entrada. Decide a dónde llevarte, con calma:
- *  sin sesión        → iniciar sesión
- *  sin boda          → configurar la boda
- *  todo listo        → el tablero
+ * Landing pública de wedRing (pre-lanzamiento, lista de espera).
+ * Un toque cinematográfico —smooth-scroll, parallax sutil, reveals al scroll—
+ * pero siempre con calma. Construida con el UI real de la app, sin assets
+ * inventados ni números falsos.
  */
-export default function Home() {
-  const router = useRouter();
-  const { ready, session, wedding } = useWedding();
-
-  useEffect(() => {
-    if (!ready) return;
-    if (!session) router.replace("/login");
-    else if (!wedding) router.replace("/configurar");
-    else router.replace("/tablero");
-  }, [ready, session, wedding, router]);
-
+export default function LandingPage() {
   return (
-    <main className="flex min-h-dvh items-center justify-center bg-ivory">
-      <RingMark size={44} className="animate-pulse opacity-70" />
-    </main>
+    <>
+      <SmoothScroll />
+      <LandingNav />
+      <main>
+        <Hero />
+        <ChaosToCalm />
+        <RsvpFeature />
+        <FeatureBento />
+        <MexicanSoul />
+        <Pricing />
+        <FinalCta />
+      </main>
+      <Footer />
+    </>
   );
 }
