@@ -27,7 +27,9 @@ export async function GET(req: Request) {
   });
 
   return json({
-    vendors: list.map(({ editToken: _e, status: _s, ...pub }) => ({
+    // Público: sin editToken, sin estado interno y SIN leads (privados del
+    // proveedor). El plan viaja solo para etiquetar "Destacado" en la UI.
+    vendors: list.map(({ editToken: _e, status: _s, leads: _l, ...pub }) => ({
       ...pub,
       verified: true as const,
     })),

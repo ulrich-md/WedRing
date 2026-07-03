@@ -67,6 +67,8 @@ export interface WeddingRecord {
   location: string;
   /** mensaje de bienvenida de la web de boda */
   webMessage: string;
+  /** paleta elegida en el onboarding — transforma el tablero y la web pública */
+  palette?: WeddingPalette;
   createdAt: string;
   guests: Guest[];
 }
@@ -94,6 +96,16 @@ export type VendorStatus = "pendiente" | "verificado" | "rechazado";
  *  "destacado" jamás altera el orden orgánico. */
 export type VendorPlan = "gratis" | "destacado";
 
+/** Una pareja interesada que tocó "Cotizar por WhatsApp". Solo hechos reales. */
+export interface VendorLead {
+  id: string;
+  at: string;
+  /** nombres de pila de la pareja (ella inició el contacto) */
+  coupleNames?: string;
+  /** para deduplicar: una boda cuenta una sola vez por proveedor */
+  weddingId?: string;
+}
+
 export interface Vendor {
   id: string;
   /** link secreto de edición /proveedor/{editToken} — su único acceso */
@@ -113,9 +125,11 @@ export interface Vendor {
   rating?: number;
   createdAt: string;
   verifiedAt?: string;
+  /** leads reales acumulados (parejas que tocaron "Cotizar") */
+  leads?: VendorLead[];
 }
 
-/** Lo que ve el público (sin tokens ni datos internos). */
-export type PublicVendor = Omit<Vendor, "editToken" | "status"> & {
+/** Lo que ve el público (sin tokens, leads ni datos internos). */
+export type PublicVendor = Omit<Vendor, "editToken" | "status" | "leads"> & {
   verified: true;
 };

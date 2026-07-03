@@ -49,11 +49,15 @@ export default function AdminPage() {
     }
   }, [load]);
 
-  async function act(id: string, action: "verificar" | "rechazar") {
+  async function act(
+    id: string,
+    action: "verificar" | "rechazar" | "plan",
+    plan?: "gratis" | "destacado",
+  ) {
     await fetch(`/api/admin/vendors/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-admin-key": key },
-      body: JSON.stringify({ action }),
+      body: JSON.stringify({ action, plan }),
     });
     load(key).catch(() => {});
   }
@@ -179,9 +183,28 @@ export default function AdminPage() {
                       <XCircle size={16} /> Rechazar
                     </Button>
                   )}
+                  {/* Plomería de monetización: cambia la etiqueta, jamás el
+                      orden orgánico (el directorio ordena por mérito). */}
+                  {v.status === "verificado" && (
+                    <Button
+                      variant="soft"
+                      onClick={() =>
+                        act(
+                          v.id,
+                          "plan",
+                          v.plan === "destacado" ? "gratis" : "destacado",
+                        )
+                      }
+                    >
+                      {v.plan === "destacado"
+                        ? "Quitar Destacado"
+                        : "Hacer Destacado"}
+                    </Button>
+                  )}
                   <span className="ml-auto self-center font-sans text-xs text-ink-faint">
                     Solicitud: {new Date(v.createdAt).toLocaleDateString("es-MX")}
                     {" · "}Plan: {v.plan}
+                    {" · "}Leads: {v.leads?.length ?? 0}
                   </span>
                 </div>
               </li>

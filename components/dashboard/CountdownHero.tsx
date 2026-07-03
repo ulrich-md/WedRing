@@ -6,19 +6,27 @@ import type { Wedding } from "@/lib/types";
 import { countdown, formatLongDate, STYLES } from "@/lib/wedding";
 
 /** El encabezado del tablero: sus nombres, su fecha, su cuenta regresiva. Aire. */
+/** hex → "r, g, b" para usarlo con opacidad en estilos inline. */
+function hexToRgb(hex: string): string {
+  const n = parseInt(hex.slice(1), 16);
+  return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+}
+
 export function CountdownHero({ wedding }: { wedding: Wedding }) {
   const c = countdown(wedding.date);
   const styleLabel =
     STYLES.find((s) => s.id === wedding.style)?.label ?? "Boda";
+  // La paleta elegida en el onboarding transforma su tablero: el acento y el
+  // lavado de color son SUYOS. Tenue siempre — la calma no se negocia.
+  const accent = wedding.palette?.hex ?? "#6f8159";
+  const rgb = hexToRgb(accent);
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-line bg-card px-7 py-9 shadow-calm sm:px-10 sm:py-11">
-      {/* lavado de color tenue con el sage y el dorado, nunca saturado */}
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
-          background:
-            "radial-gradient(110% 90% at 100% 0%, rgba(194,163,107,0.10), transparent 55%), radial-gradient(80% 80% at 0% 100%, rgba(111,129,89,0.08), transparent 60%)",
+          background: `radial-gradient(110% 90% at 100% 0%, rgba(194,163,107,0.10), transparent 55%), radial-gradient(80% 80% at 0% 100%, rgba(${rgb}, 0.10), transparent 60%)`,
         }}
       />
       <div className="relative">
@@ -38,7 +46,10 @@ export function CountdownHero({ wedding }: { wedding: Wedding }) {
           <div className="text-right">
             {c.hasDate ? (
               <>
-                <p className="font-serif text-5xl leading-none text-sage-600">
+                <p
+                  className="font-serif text-5xl leading-none"
+                  style={{ color: accent }}
+                >
                   {c.days}
                 </p>
                 <p className="mt-1 font-sans text-sm text-ink-faint">

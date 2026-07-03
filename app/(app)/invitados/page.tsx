@@ -11,6 +11,8 @@ import {
   Check,
   BellRing,
   Copy,
+  Pencil,
+  X,
 } from "lucide-react";
 import { useWedding } from "@/components/providers/WeddingProvider";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -35,6 +37,7 @@ export default function InvitadosPage() {
   const [filter, setFilter] = useState<Filter>("todos");
   const [showImport, setShowImport] = useState(false);
   const [copied, setCopied] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   const linked = Boolean(wedding?.serverId && wedding?.coupleKey);
 
@@ -211,6 +214,21 @@ export default function InvitadosPage() {
                 g.status === "pendiente"
                   ? reminderMessage(wedding, g)
                   : inviteMessage(wedding, g);
+              if (editingId === g.id) {
+                return (
+                  <li key={g.id} className="card-calm px-5 py-4">
+                    <GuestEditRow
+                      guest={g}
+                      onCancel={() => setEditingId(null)}
+                      onSave={async (patch) => {
+                        await api.updateGuest(wedding, g.id, patch).catch(() => {});
+                        setEditingId(null);
+                        refresh();
+                      }}
+                    />
+                  </li>
+                );
+              }
               return (
                 <li
                   key={g.id}
@@ -259,6 +277,13 @@ export default function InvitadosPage() {
                       {copied === g.id ? <Check size={16} /> : <Link2 size={16} />}
                     </button>
                     <button
+                      onClick={() => setEditingId(g.id)}
+                      title="Editar invitado"
+                      className="grid h-9 w-9 place-items-center rounded-full text-ink-faint transition-colors duration-[250ms] ease-calm hover:bg-sage-50 hover:text-ink-soft"
+                    >
+                      <Pencil size={15} />
+                    </button>
+                    <button
                       onClick={async () => {
                         await api.deleteGuest(wedding, g.id).catch(() => {});
                         refresh();
@@ -300,6 +325,79 @@ export default function InvitadosPage() {
         </Reveal>
       )}
     </div>
+  );
+}
+
+function GuestEditRow({
+  guest,
+  onSave,
+  onCancel,
+}: {
+  guest: Guest;
+  onSave: (patch: Partial<Guest>) => Promise<void>;
+  onCancel: () => void;
+}) {
+  const [name, setName] = useState(guest.name);
+  const [phone, setPhone] = useState(guest.phone ?? "");
+  const [status, setStatus] = useState<RsvpStatus>(guest.status);
+  const [busy, setBusy] = useState(false);
+
+  return (
+    <form
+      className="flex flex-wrap items-center gap-2.5"
+      onSubmit={async (e) => {
+        e.preventDefault();
+        if (!name.trim() || busy) return;
+        setBusy(true);
+        try {
+          await onSave({ name: name.trim(), phone: phone.trim(), status });
+        } finally {
+          setBusy(false);
+        }
+      }}
+    >
+      <input
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="h-10 min-w-40 flex-1 rounded-xl border border-line bg-ivory/60 px-3 font-sans text-sm text-ink focus:border-sage-300 focus:outline-none"
+        placeholder="Nombre"
+        autoFocus
+      />
+      <input
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        inputMode="tel"
+        className="h-10 w-40 rounded-xl border border-line bg-ivory/60 px-3 font-sans text-sm text-ink placeholder:text-ink-faint/60 focus:border-sage-300 focus:outline-none"
+        placeholder="WhatsApp"
+      />
+      <select
+        value={status}
+        onChange={(e) => setStatus(e.target.value as RsvpStatus)}
+        className="h-10 rounded-xl border border-line bg-ivory/60 px-2 font-sans text-sm text-ink focus:border-sage-300 focus:outline-none"
+        title="Corregir estado a mano"
+      >
+        <option value="pendiente">Pendiente</option>
+        <option value="confirmado">Confirmó</option>
+        <option value="talvez">Tal vez</option>
+        <option value="declinado">No podrá</option>
+      </select>
+      <button
+        type="submit"
+        disabled={!name.trim() || busy}
+        className="grid h-10 w-10 place-items-center rounded-full bg-sage-600 text-ivory transition-colors duration-[250ms] ease-calm hover:bg-sage-700 disabled:opacity-50"
+        title="Guardar"
+      >
+        <Check size={16} />
+      </button>
+      <button
+        type="button"
+        onClick={onCancel}
+        className="grid h-10 w-10 place-items-center rounded-full text-ink-faint hover:bg-sage-50"
+        title="Cancelar"
+      >
+        <X size={16} />
+      </button>
+    </form>
   );
 }
 

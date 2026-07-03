@@ -1,5 +1,5 @@
 import { readDb, mutateDb } from "@/lib/server/db";
-import { errorJson, isCouple, json } from "@/lib/server/util";
+import { errorJson, isCouple, json, sanitizePalette } from "@/lib/server/util";
 
 type Ctx = { params: { id: string } };
 
@@ -38,6 +38,10 @@ export async function PATCH(req: Request, { params }: Ctx) {
     if ("location" in body) w.location = String(body.location ?? "").slice(0, 120);
     if ("webMessage" in body)
       w.webMessage = String(body.webMessage ?? "").slice(0, 600);
+    if ("palette" in body) {
+      const p = sanitizePalette(body.palette as { hex?: unknown });
+      if (p) w.palette = p;
+    }
     return w;
   });
 

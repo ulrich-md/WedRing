@@ -7,10 +7,12 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { useLocalState } from "@/lib/local";
 import { CHECKLIST_TEMPLATE, TOTAL_TASKS } from "@/lib/checklist";
-import { api, waLink } from "@/lib/api";
+import { api, sendLead, waLink } from "@/lib/api";
+import { useWedding } from "@/components/providers/WeddingProvider";
 import { VENDOR_CATEGORIES, type Vendor } from "@/lib/types";
 
 export default function ChecklistPage() {
+  const { wedding } = useWedding();
   const [done, setDone] = useLocalState<Record<string, boolean>>(
     "wedring.checklist",
     {},
@@ -123,6 +125,7 @@ export default function ChecklistPage() {
                                   `Hola, ${v.name} 👋 Los vimos en wedRing y nos gustaría cotizar para nuestra boda.`,
                                   v.whatsapp,
                                 )}
+                                onClick={() => sendLead(v.id, wedding)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1 rounded-full bg-confirmed/12 px-2.5 py-1 font-sans text-xs font-medium text-confirmed hover:bg-confirmed/20"

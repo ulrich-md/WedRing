@@ -24,6 +24,16 @@ export function makeSlug(partners: [string, string]): string {
   return `${base || "nuestra-boda"}-${genToken(3)}`;
 }
 
+/** Valida la paleta de la pareja (hex estricto — se inyecta en estilos). */
+export function sanitizePalette(
+  p?: { name?: unknown; hex?: unknown } | null,
+): { name: string; hex: string } | undefined {
+  if (!p) return undefined;
+  const hex = String(p.hex ?? "");
+  if (!/^#[0-9a-fA-F]{6}$/.test(hex)) return undefined;
+  return { name: String(p.name ?? "").slice(0, 40), hex };
+}
+
 /* ── Auth ── */
 
 /** Clave del panel de administración. SIEMPRE configúrala en producción. */

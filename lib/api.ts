@@ -28,6 +28,7 @@ export const api = {
         partners: w.partners,
         date: w.date,
         location: w.location,
+        palette: w.palette,
       }),
     }),
 
@@ -40,6 +41,7 @@ export const api = {
         partners: w.partners,
         date: w.date,
         location: w.location,
+        palette: w.palette,
         ...extra,
       }),
     }),
@@ -87,6 +89,19 @@ export const api = {
     );
   },
 };
+
+/**
+ * Registra un lead real cuando la pareja toca "Cotizar por WhatsApp".
+ * Fire-and-forget: nunca bloquea el gesto de contacto.
+ */
+export function sendLead(vendorId: string, w?: Wedding | null) {
+  const coupleNames = w?.partners.filter(Boolean).join(" y ") || undefined;
+  fetch(`/api/vendors/${vendorId}/lead`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ coupleNames, weddingId: w?.serverId }),
+  }).catch(() => {});
+}
 
 /* ── Mensajes de WhatsApp (wa.me) ── */
 

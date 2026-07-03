@@ -63,6 +63,10 @@ export default async function BodaPage({
   }
 
   const days = daysLeft(wedding.date);
+  // La paleta de la pareja tiñe SU web — es su boda, no la nuestra.
+  const accent = wedding.palette?.hex ?? "#6f8159";
+  const n = parseInt(accent.slice(1), 16);
+  const rgb = `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
 
   return (
     <main className="min-h-dvh bg-ivory">
@@ -71,8 +75,7 @@ export default async function BodaPage({
         <div
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
-            background:
-              "radial-gradient(90% 60% at 50% -5%, rgba(236,220,184,0.55), transparent 60%)",
+            background: `radial-gradient(90% 60% at 50% -5%, rgba(236,220,184,0.5), transparent 60%), radial-gradient(70% 50% at 50% 100%, rgba(${rgb}, 0.08), transparent 65%)`,
           }}
         />
         <RingMark size={44} className="mx-auto" />
@@ -97,7 +100,12 @@ export default async function BodaPage({
 
         {days !== null && (
           <div className="mx-auto mt-9 inline-block rounded-3xl border border-line bg-card px-10 py-6 shadow-calm">
-            <p className="font-serif text-5xl leading-none text-sage-600">{days}</p>
+            <p
+              className="font-serif text-5xl leading-none"
+              style={{ color: accent }}
+            >
+              {days}
+            </p>
             <p className="mt-1 font-sans text-xs uppercase tracking-eyebrow text-ink-faint">
               días para el sí
             </p>

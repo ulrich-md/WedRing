@@ -12,8 +12,9 @@ import {
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { api, waLink } from "@/lib/api";
+import { api, sendLead, waLink } from "@/lib/api";
 import { useLocalState } from "@/lib/local";
+import { useWedding } from "@/components/providers/WeddingProvider";
 import { VENDOR_CATEGORIES, type Vendor } from "@/lib/types";
 
 /** Seguimiento de cotizaciones/pagos por proveedor (privado de la pareja). */
@@ -34,6 +35,7 @@ export default function ProveedoresPage() {
 }
 
 function ProveedoresInner() {
+  const { wedding } = useWedding();
   const params = useSearchParams();
   const [category, setCategory] = useState(params.get("categoria") ?? "");
   const [city, setCity] = useState("");
@@ -150,9 +152,15 @@ function ProveedoresInner() {
                 <li key={v.id} className="card-calm flex flex-col px-5 py-5">
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="inline-flex items-center gap-1.5 font-serif text-lg leading-tight text-ink">
+                      <p className="inline-flex flex-wrap items-center gap-1.5 font-serif text-lg leading-tight text-ink">
                         {v.name}
                         <BadgeCheck size={16} className="text-confirmed" />
+                        {/* Etiqueta clara estilo anuncio: jamás altera el orden */}
+                        {v.plan === "destacado" && (
+                          <span className="rounded-full bg-gold-soft/60 px-2 py-0.5 font-sans text-[0.6rem] font-semibold uppercase tracking-wide text-gold-deep">
+                            Destacado
+                          </span>
+                        )}
                       </p>
                       <p className="mt-0.5 font-sans text-xs text-ink-faint">
                         {VENDOR_CATEGORIES.find((c) => c.id === v.category)?.label}
@@ -185,6 +193,7 @@ function ProveedoresInner() {
                         `Hola, ${v.name} 👋 Los vimos en wedRing y queremos cotizar para nuestra boda.`,
                         v.whatsapp,
                       )}
+                      onClick={() => sendLead(v.id, wedding)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 rounded-full bg-confirmed/12 px-3.5 py-2 font-sans text-sm font-medium text-confirmed hover:bg-confirmed/20"

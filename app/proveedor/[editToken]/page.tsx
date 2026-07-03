@@ -6,7 +6,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { BadgeCheck, Clock, XCircle, Check } from "lucide-react";
+import { BadgeCheck, Clock, XCircle, Check, Users } from "lucide-react";
 import { RingMark, Wordmark } from "@/components/brand/RingMark";
 import { Reveal } from "@/components/ui/Reveal";
 import { VendorForm, vendorToValues } from "@/components/vendors/VendorForm";
@@ -88,6 +88,49 @@ export default function ProveedorPage() {
                 );
               })()}
             </Reveal>
+
+            {/* Leads reales: parejas que tocaron "Cotizar" contigo */}
+            {vendor.status === "verificado" && (
+              <Reveal className="mt-6" delay={0.04}>
+                <div className="card-calm p-6">
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-sage-50 text-sage-600">
+                      <Users size={19} />
+                    </span>
+                    <div>
+                      <p className="font-serif text-2xl leading-none text-ink">
+                        {vendor.leads?.length ?? 0}
+                      </p>
+                      <p className="font-sans text-xs text-ink-faint">
+                        parejas interesadas desde wedRing (te escriben directo a
+                        tu WhatsApp)
+                      </p>
+                    </div>
+                  </div>
+                  {(vendor.leads?.length ?? 0) > 0 && (
+                    <ul className="mt-4 divide-y divide-line">
+                      {vendor.leads!
+                        .slice()
+                        .reverse()
+                        .slice(0, 10)
+                        .map((l) => (
+                          <li
+                            key={l.id}
+                            className="flex items-center justify-between py-2.5"
+                          >
+                            <span className="font-sans text-sm text-ink">
+                              {l.coupleNames ?? "Una pareja"}
+                            </span>
+                            <span className="font-sans text-xs text-ink-faint">
+                              {new Date(l.at).toLocaleDateString("es-MX")}
+                            </span>
+                          </li>
+                        ))}
+                    </ul>
+                  )}
+                </div>
+              </Reveal>
+            )}
 
             <Reveal className="mt-6" delay={0.06}>
               <div className="card-calm p-6 sm:p-8">

@@ -63,7 +63,14 @@ export function WeddingProvider({ children }: { children: React.ReactNode }) {
     }
     // Solo cuando cambian los datos compartidos.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, wedding?.serverId, wedding?.partners, wedding?.date, wedding?.location]);
+  }, [
+    ready,
+    wedding?.serverId,
+    wedding?.partners,
+    wedding?.date,
+    wedding?.location,
+    wedding?.palette?.hex,
+  ]);
 
   const signIn = useCallback((next: Session) => {
     storage.setSession(next);

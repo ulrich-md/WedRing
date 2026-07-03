@@ -1,5 +1,12 @@
 import { mutateDb } from "@/lib/server/db";
-import { genId, genToken, json, makeSlug, errorJson } from "@/lib/server/util";
+import {
+  genId,
+  genToken,
+  json,
+  makeSlug,
+  errorJson,
+  sanitizePalette,
+} from "@/lib/server/util";
 import type { WeddingRecord } from "@/lib/types";
 
 /** Crea el registro compartido de la boda. Devuelve credenciales de pareja. */
@@ -8,6 +15,7 @@ export async function POST(req: Request) {
     partners?: [string, string];
     date?: string | null;
     location?: string;
+    palette?: { name: string; hex: string };
   };
   try {
     body = await req.json();
@@ -31,6 +39,7 @@ export async function POST(req: Request) {
     date: body.date ?? null,
     location: String(body.location ?? "").slice(0, 120),
     webMessage: "",
+    palette: sanitizePalette(body.palette),
     createdAt: new Date().toISOString(),
     guests: [],
   };
