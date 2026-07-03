@@ -5,73 +5,66 @@
 wedRing es lo contrario al caos de planear una boda. Se siente como una amiga
 que ya se casó y te dice: _"tranquila, yo te ayudo a ponerlo en orden."_
 
-Este repositorio contiene el **cascarón** de la app: el primer paso de la
-visión, con la vibe ya puesta. A partir de aquí se irá agregando todo lo demás,
-de a poco, sin romper nunca la calma.
-
 ## La vibe (su alma)
 
 - **Calma, no estrés.** Cada pantalla respira. Mucho aire, una cosa importante a la vez.
 - **Cálida y humana**, nunca corporativa. Habla en "tú".
 - **Quiet luxury:** marfil, verde sage, dorado suave, tipografía serif.
-- **Honesta y con alma mexicana:** padrinos, haciendas, español por defecto.
+- **Honesta:** sin números inventados, sin "paga para salir primero".
+- **Con alma mexicana:** padrinos, haciendas, español por defecto.
 
-## Qué incluye este cascarón
+## Qué está construido
 
-- **Intro calmado** — un anillo que se dibuja solo y revela la app (bajo 2s, respeta `prefers-reduced-motion`).
-- **Inicio de sesión** — sin contraseñas; entra por WhatsApp o correo.
-- **Configura tu boda** — onboarding paso a paso: nombres, fecha, estilo y colores.
-- **El tablero** — sus nombres, su fecha, cuenta regresiva y tarjetas tranquilas de resumen (presupuesto, invitados, checklist, proveedores, padrinos, web).
-- **Navegación entre secciones** — barra lateral en escritorio, barra inferior en móvil.
-- **Ajustes** — edita los detalles de tu boda y tu cuenta.
-- Las secciones por construir (Invitados/RSVP, Presupuesto, Checklist, Proveedores, Padrinos, Web) muestran un estado _"próximamente"_ cálido y honesto, igual de cuidado que el resto.
+**Lado pareja (gratis, el núcleo):**
+- **Cascarón:** login sin contraseñas, onboarding (nombres/fecha/estilo/colores), tablero con cuenta regresiva y tarjetas **en vivo**.
+- **RSVP por WhatsApp (el corazón):** cada invitado tiene un link único `/rsvp/{token}`; botón *wa.me* con mensaje pre-llenado + copiar link; página pública mobile-first **ES/EN** (sí/no/tal vez, acompañantes, menú, notas); el conteo se actualiza solo; *"Recordar a pendientes"*.
+- **Invitados:** agregar/importar (pegar lista), filtros por estado, totales con acompañantes y menú.
+- **Checklist con cronograma** (12→1 meses), % de avance y **proveedores verificados en contexto** dentro de las tareas.
+- **Presupuesto:** total, gastos por categoría, gastado vs restante, gráfica simple. Las aportaciones de padrinos suman solas.
+- **Padrinos por rol** (lazo, anillos, arras, ramo… editable) con patrocinios y aportaciones.
+- **Web de boda** pública `/boda/{slug}` con detalles + RSVP explicado. Tema básico gratis.
 
-> El estado vive por ahora en el navegador (localStorage). Más adelante será el
-> contrato con el backend, sin tocar la UI.
+**Lado negocio (panel de anunciantes):**
+- **Registro self-serve** en `/anunciantes` → entra **pendiente de verificación** (NO visible).
+- **Panel de administración** `/admin` (clave `WEDRING_ADMIN_KEY`): verificar / rechazar.
+- Solo **verificados** aparecen para parejas, ordenados por **mérito** — nunca por pago.
+- **Dashboard del proveedor** `/proveedor/{editToken}` (link secreto): edita solo su perfil.
+- Plomería de monetización lista pero **apagada**: campo `plan: gratis|destacado`. Hoy todos gratis.
 
-## Decisiones de diseño
-
-| | |
-|---|---|
-| **Paleta** | Marfil cálido `#FAF6EF`, sage `#5C6B49`, dorado suave `#C2A36B`, tinta cálida |
-| **Tipografía** | Cormorant Garamond (serif display) + Mulish (sans humanista) |
-| **Movimiento** | UNA curva de easing `cubic-bezier(0.22, 1, 0.36, 1)`; duraciones que escalan con el tamaño; reveals sutiles |
-| **Stack** | Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion · lucide-react |
-
-La dirección de color y movimiento sigue la disciplina del documento de
-referencia (un solo acento, una sola curva, intro que marca el tono), pero
-aplicada con **calma**: nada agresivo, nada que distraiga.
+**Seguridad:**
+- La página pública de RSVP valida el token y **solo** lee/escribe el RSVP de ese invitado. Nunca expone la lista.
+- Mutaciones de la pareja → header `x-couple-key`. Admin → `x-admin-key`. Proveedor → su `editToken`.
 
 ## Cómo correrlo
 
 ```bash
 npm install
-npm run dev
-# abre http://localhost:3000
+cp .env.example .env      # pon tu WEDRING_ADMIN_KEY
+npm run dev               # http://localhost:3000
+npm run seed              # (opcional) 5 proveedores "(Ejemplo)" para probar /admin
 ```
 
-## Estructura
+Flujo de prueba: crea tu boda → agrega una invitada → copia su link → ábrelo en
+incógnito y confirma → mira el tablero actualizarse. Luego `npm run seed` →
+`/admin` (clave `wedring-admin-dev` en dev) → verifica → míralos en `/proveedores`
+y dentro del checklist.
 
-```
-app/
-  layout.tsx            # fuentes, provider, intro
-  page.tsx              # ruteo según sesión/boda
-  login/                # inicio de sesión
-  configurar/           # onboarding de la boda
-  (app)/                # cascarón autenticado (sidebar + topbar + nav móvil)
-    tablero/            # el tablero (centro de calma)
-    invitados/ … web/   # secciones (próximamente)
-    configuracion/      # ajustes
-components/             # marca, shell, dashboard, ui, providers
-lib/                    # tipos, storage, datos de la boda, navegación, motion
-.claude/skills/         # skill UI/UX Pro Max instalada
-```
+## Arquitectura de datos (léelo antes de lanzar)
 
-## Orden para seguir construyendo
+- **Compartido** (invitados/RSVP, boda pública, proveedores) → servidor, vía API routes.
+- **Privado de la pareja** (checklist, presupuesto, padrinos) → localStorage.
+- El almacén del servidor es un **JSON en `data/`** con interfaz limpia
+  (`lib/server/db.ts`). ⚠️ **En serverless (Vercel) el filesystem es efímero:**
+  antes de producción, reemplaza solo ese módulo por Supabase/Postgres. Nada
+  más de la app cambia.
 
-1. ✅ El cascarón (esto).
-2. El corazón: RSVP por WhatsApp completo.
-3. De a poco: presupuesto → checklist → proveedores → padrinos → web → extras.
+## Lo que NO se construyó (a propósito)
 
-Regla de oro: cada cosa nueva debe sentirse exactamente igual de calmada y
-cuidada que la primera pantalla. La vibe nunca se rompe.
+Luna de miel y notas de agradecimiento (cortadas), mesa de regalos, plan de
+mesas y galería QR (futuras Pro), comparador de venues (cuando haya densidad
+de proveedores). El foco es el núcleo que mueve el negocio.
+
+## Regla de oro
+
+Cada cosa nueva debe sentirse exactamente igual de calmada y cuidada que la
+primera pantalla. La vibe nunca se rompe.

@@ -1,5 +1,4 @@
-// Mapa de secciones del cascarón. El orden refleja cómo se irá construyendo
-// la app: primero el tablero y el corazón (RSVP), luego lo demás.
+// Mapa de secciones de la app. Todas las del núcleo ya están construidas.
 
 import type { LucideIcon } from "lucide-react";
 import {
@@ -23,12 +22,12 @@ export interface NavItem {
 
 export const NAV: NavItem[] = [
   { href: "/tablero", label: "Tablero", icon: LayoutDashboard, ready: true },
-  { href: "/invitados", label: "Invitados", icon: Users, ready: false },
-  { href: "/presupuesto", label: "Presupuesto", icon: Wallet, ready: false },
-  { href: "/checklist", label: "Checklist", icon: ListChecks, ready: false },
-  { href: "/proveedores", label: "Proveedores", icon: Store, ready: false },
-  { href: "/padrinos", label: "Padrinos", icon: HeartHandshake, ready: false },
-  { href: "/web", label: "Web de boda", icon: Globe, ready: false },
+  { href: "/invitados", label: "Invitados", icon: Users, ready: true },
+  { href: "/presupuesto", label: "Presupuesto", icon: Wallet, ready: true },
+  { href: "/checklist", label: "Checklist", icon: ListChecks, ready: true },
+  { href: "/proveedores", label: "Proveedores", icon: Store, ready: true },
+  { href: "/padrinos", label: "Padrinos", icon: HeartHandshake, ready: true },
+  { href: "/web", label: "Web de boda", icon: Globe, ready: true },
   { href: "/configuracion", label: "Ajustes", icon: Settings, ready: true },
 ];
 

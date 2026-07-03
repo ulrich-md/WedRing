@@ -19,6 +19,7 @@ const COLS = [
     links: [
       { label: "Alma mexicana", href: "#alma" },
       { label: "Lista de espera", href: "#lista" },
+      { label: "Para proveedores", href: "/anunciantes" },
     ],
   },
 ];
