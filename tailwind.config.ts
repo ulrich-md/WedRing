@@ -79,10 +79,6 @@ const config: Config = {
           from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
-        "draw-ring": {
-          from: { strokeDashoffset: "1" },
-          to: { strokeDashoffset: "0" },
-        },
         float: {
           "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
           "50%": { transform: "translate3d(0,-18px,0) scale(1.04)" },
